@@ -4,11 +4,13 @@ import * as helpers from "../utils/helpers";
 import VideoFilePicker from "../components/VideoFilePicker";
 import OutputVideo from "../components/OutputVideo";
 import RangeInput from "../components/RangeInput";
-
-const FF = createFFmpeg({
-  // log: true,
-  corePath: "https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js",
-});
+let FF;
+try {
+  FF = createFFmpeg({
+    // log: true,
+    corePath: "https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js",
+  });
+} catch (error) {}
 
 (async function () {
   await FF.load();
